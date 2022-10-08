@@ -25,5 +25,21 @@ megfejtes = list("_" * len(feladavany))
 *(Feltételezzük, hogy a felhasználó tényleg egy betűt ír be. Ezt nem fogjuk ellenőrizni.)*
 
 ```python
-betu = input("Betu: ")
+tipp = input("Tipp: ")
+```
+
+Készítsünk a feladványból egy felsorolást az `enumerate()` függvény segítségével, és lépkedjünk végig a felsorolás elemein egy `for` ciklussal!
+
+```python
+tipp = input("Tipp: ")
+for sorszam, betu in enumerate(feladvany):
+```
+
+Ellenőrizzük, hogy a játékos tippje megegyezik-e a felsorolás éppen vizsgált elemével, és ha igen, a megfelelő alulvonást cseréljük ki a megfejtésben!
+
+```python
+tipp = input("Tipp: ")
+for sorszam, betu in enumerate(feladvany):
+	if betu == tipp:
+		megfejtes[sorszam] = tipp
 ```

@@ -1,5 +1,6 @@
 remote_theme: "dracula/gh-pages"
 
+title: "Jázékok Python programozáshoz"
 icon: "logo.svg"
 
 colorspace: cyan

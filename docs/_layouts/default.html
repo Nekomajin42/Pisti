@@ -20,14 +20,9 @@
   <body class="{{ page.colorspace }}">
 
     <article>
-      {% if site.show_header %}<section>
-      {% else %}<section class="no-header">{% endif %}
         <header>
-          {% if page.icon %}
-            <img src="{{ page.icon | relative_url }}" />
-          {% endif %}
+          <img src="{{ page.icon | relative_url }}" />
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
-          <hr>
         </header>
 
         {{ content }}
@@ -37,8 +32,6 @@
           <span class="credits left">👻 <a href="{{ site.github.owner_url }}">Tóth Róbert</a></span>
           <span class="credits right">🎃 <a href="https://pages.github.com/">GitHub Pages</a> 🧛 <a href="https://draculatheme.com/">Dracula Theme</a></span>
         </footer>
-      </section>
-
     </article>
 
   </body>

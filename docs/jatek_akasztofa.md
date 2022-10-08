@@ -88,13 +88,77 @@ while True: # Az Igaz feltétel miatt magától soha nem áll le a ciklus
     print(f"{''.join(megfejtes)}")
 ```
 
-A program így egészen addig fut, amíg be nem zárjuk az ablakot. Ha a játékos az összes betűt eltalálta, akkor sem áll meg.
+Így néz ki eddig a teljes programkódunk. Ez viszont egészen addig fut, amíg a játékos be nem zárja az ablakot. Ha az összes betűt eltalálta, akkor sem áll meg.
 
 Ahhoz, hogy a ciklust megállítsuk, ellenőriznünk kell, hogy a játékos kitalálta-e a feladványt. Ezt legegyszerűbben úgy tudjuk megtenni, hogy összehasonlítjuk a feladvány és a megfejtés változókat, és ha azok ugyanazt a szöveget tartalmazzák, az azt jelenti, hogy a játékos mindent betűt megtalált. Ebben az esetben a `break` utasítás segítségével megállítjuk a ciklust.
 
 ```python
+# ...
+
+while True:
+    # ...
+    
+    if ''.join(megfejtes) == feladvany: # A megfejtés betűit ne felejtsük el összefűzni!
+        print(f"Helyes megoldas!")
+        break
+```
+
+5️⃣ A ciklusunk most már megáll, ha a játékos kitalálta a feladványt, de ez nem túl nehéz feladat, hiszen az összes betűt végigpróbálhatja. Az akasztófa játék szabályai szerint viszont minden hibás tipp estében veszít egy életet, és amikor az összes élete elfogy, akkor meghal.
+
+Ahhoz, hogy ezt ellenőrizzük, a kód elején hozzunk létre egy változót, és a kezdőértékét állítsuk 10-re!
+
+```python
 feladvany = "almafa"
 megfejtes = list("_" * len(feladvany))
+
+elet = 10
+
+# ...
+```
+
+Ezután a kódnak azon a részén, ahol ellenőrizzük, hogy a játékos jól tippelt-e, csökkentsük az élet változó értékét eggyel, ha hibázott!
+
+```python
+# ...
+
+while True:
+    print()
+    tipp = input("Tipp: ")
+
+    for sorszam, betu in enumerate(feladvany):
+        if betu == tipp:
+            megfejtes[sorszam] = tipp
+    else:
+        elet -= 1
+
+    # ...
+```
+
+Utolsó lépésként a ciklus végén ellenőrizzük a játékos életeinek a számát! Ha elfogyott, írjuk ki a megfelelő üzenetet, majd állítsuk meg a ciklust!
+
+```python
+# ...
+
+while True:
+    # ...
+    
+    if ''.join(megfejtes) == feladvany: # A megfejtés betűit ne felejtsük el összefűzni!
+        print(f"Helyes megoldas!")
+        break
+    
+    if elet == 0:
+        print(f"Sajnos vesztettel!")
+        print(f"A helyes megfejtes: {feladvany")
+        break
+```
+
+## A teljes kód
+
+```python
+feladvany = "almafa"
+megfejtes = list("_" * len(feladvany))
+
+elet = 10
 
 print(f"{''.join(megfejtes)}")
 
@@ -105,11 +169,17 @@ while True:
     for sorszam, betu in enumerate(feladvany):
         if betu == tipp:
             megfejtes[sorszam] = tipp
+    else:
+        elet -= 1
 
     print(f"{''.join(megfejtes)}")
-    
+
     if ''.join(megfejtes) == feladvany: # A megfejtés betűit ne felejtsük el összefűzni!
+        print(f"Helyes megoldas!")
+        break
+
+    if elet == 0:
+        print(f"Sajnos vesztettel!")
+        print(f"A helyes megfejtes: {feladvany}")
         break
 ```
-
-5️⃣ 

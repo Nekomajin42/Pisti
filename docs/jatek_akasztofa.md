@@ -20,17 +20,35 @@ feladvany = "almafa"
 megfejtes = list("_" * len(feladavany))
 ```
 
-2️⃣ Kérjünk be a felhasználótól egy betűt, és tároljuk el egy változóban!
+2️⃣ Írjuk ki a képernyőre a megfejtést, ami egyelőre csak alulvonásokat tartalmaz!
+
+```python
+print(f"{megfejtes}")
+```
+
+Látni fogjuk, hogy az alulvonások felsorolásszerűen jelennek meg. Ez azért van, mert a megfejtés változónk nem egy szöveg, hanem egy szöveg betűinek a listája.
+
+A feladat megoldása közben ilyen formában van rá szükségünk, a képernyőn viszont rendes szövegként szeretnénk látni, ezért a kiírás előtt a `join()` függvény segítségével fűzzük össze a listában találató betűket, hogy újra egy szóként jelenjenek meg!
+
+**Figyeljünk arra, hogy az összefűzés idézőjelek között van! Az összefűzéshez használjunk helyette aposztrófokat!
+
+```python
+print(f"{''.join(megfejtes)}")
+```
+
+3️⃣ Írjunk egy üres sort, hogy kiírás szebben tagolt legyen, majd kérjünk be a felhasználótól egy betűt, és tároljuk el egy változóban!
 
 *(Feltételezzük, hogy a felhasználó tényleg egy betűt ír be. Ezt nem fogjuk ellenőrizni.)*
 
 ```python
+print()
 tipp = input("Tipp: ")
 ```
 
 Készítsünk a feladványból egy felsorolást az `enumerate()` függvény segítségével, és lépkedjünk végig a felsorolás elemein egy `for` ciklussal!
 
 ```python
+print()
 tipp = input("Tipp: ")
 for sorszam, betu in enumerate(feladvany):
 ```
@@ -38,8 +56,34 @@ for sorszam, betu in enumerate(feladvany):
 Ellenőrizzük, hogy a játékos tippje megegyezik-e a felsorolás éppen vizsgált elemével, és ha igen, a megfelelő alulvonást cseréljük ki a megfejtésben!
 
 ```python
+print()
 tipp = input("Tipp: ")
 for sorszam, betu in enumerate(feladvany):
-	if betu == tipp:
-		megfejtes[sorszam] = tipp
+    if betu == tipp:
+        megfejtes[sorszam] = tipp
+```
+
+4️⃣ Függetlenül attól, hogy a felhasználó eltalálta-e a feladvány valamelyik betűjét, a megoldást írjuk ki újra a képernyőre úgy, ahogy az előbb is tettük!
+
+```python
+print(f"{''.join(megfejtes)}")
+```
+
+5️⃣ Ezen a ponton a játékos egyszer tud tippelni, majd a program futása véget ér. Ha azt szeretnénk, hogy többször is tippeljen, akkor az eddig megírt kódunk egy részét meg kell ismételni. Ehhez helyezzük a megfelelő kódrészletet egy `while` ciklusba, és ismételjük azt (egyelőre) végtelenszer!
+
+```python
+feladvany = "almafa"
+megfejtes = list("_" * len(feladvany))
+
+print(f"{''.join(megfejtes)}")
+
+while True:
+    print()
+    tipp = input("Tipp: ")
+
+    for sorszam, betu in enumerate(feladvany):
+        if betu == tipp:
+            megfejtes[sorszam] = tipp
+
+    print(f"{''.join(megfejtes)}")
 ```

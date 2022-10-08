@@ -51,6 +51,7 @@ Készítsünk a feladványból egy felsorolást az `enumerate()` függvény seg�
 print()
 tipp = input("Tipp: ")
 for sorszam, betu in enumerate(feladvany):
+    # ???
 ```
 
 Ellenőrizzük, hogy a játékos tippje megegyezik-e a felsorolás éppen vizsgált elemével, és ha igen, a megfelelő alulvonást cseréljük ki a megfejtésben!

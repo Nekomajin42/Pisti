@@ -2,16 +2,28 @@
 
 Ebben a feladatban az akasztófa játék módosított verzióját készítjük el.
 
-1️⃣ Első lépésként hozzunk létre két változót! Az első tartalmazza a feladványt, a második pedig annyi _ (alulvonás) karaktert, ahány betűből áll a feladvány.
+1️⃣ Első lépésként hozzunk létre két változót! Az első tartalmazza a feladványt, a második pedig annyi alulvonás karaktert, ahány betűből áll a feladvány.
+
+**A `*` műveleti jel ebben az esetben nem szorzást végez, hanem megismétli a szöveget annyiszor, amennyi a jobb oldalán áll.**
+
+Annak érdekében, hogy tetszőleges hosszúságú feladvánnyal is működjön a programunk, a `len()` függvény segítségével kérjük le, hogy hány betűből áll a szó!
 
 ```python
-feladavany = "almafa"
+feladvany = "almafa"
 megfejtes = "_" * len(feladavany)
 ```
 
-A játékos tippje után, ha olyan betűt ír be, ami szerepel a feladaványban, az alulvonást ki fogjuk cserélni a megfelelő betűre. A Python viszont nem engedi, hogy egy szöveg kerektereit módosítsuk, ezért készítsünk a szövegből egy listát, ami a megfejtés karaktereit tartalmma!
+A játékos tippje után, ha olyan betűt ír be, ami szerepel a feladaványban, az alulvonást ki fogjuk cserélni a megfelelő betűre. A Python viszont nem engedi, hogy egy szöveg kerektereit módosítsuk, ezért készítsünk a szövegből egy listát, ami a megfejtés karaktereit tartalmazza!
 
 ```python
-feladavany = "almafa"
+feladvany = "almafa"
 megfejtes = list("_" * len(feladavany))
+```
+
+2️⃣ Kérjünk be a felhasználótól egy betűt, és tároljuk el egy változóban!
+
+*(Feltételezzük, hogy a felhasználó tényleg egy betűt ír be. Ezt nem fogjuk ellenőrizni.)*
+
+```python
+betu = input("Betu: ")
 ```

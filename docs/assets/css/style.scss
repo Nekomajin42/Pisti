@@ -1,0 +1,20 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+}
+
+article {
+  flex: auto;
+  margin: 8px;
+  padding: 8px;
+}
+
+h1 {
+  font-size: 2rem;
+}

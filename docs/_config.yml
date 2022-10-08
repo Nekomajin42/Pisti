@@ -1,1 +1,3 @@
 remote_theme: "dracula/gh-pages"
+icon: "../logo.svg"
+colorspace: cyan

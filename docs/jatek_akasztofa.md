@@ -63,13 +63,34 @@ for sorszam, betu in enumerate(feladvany):
         megfejtes[sorszam] = tipp
 ```
 
-4️⃣ Függetlenül attól, hogy a felhasználó eltalálta-e a feladvány valamelyik betűjét, a megoldást írjuk ki újra a képernyőre úgy, ahogy az előbb is tettük!
+Végül, függetlenül attól, hogy a felhasználó eltalálta-e a feladvány valamelyik betűjét, a megoldást írjuk ki újra a képernyőre úgy, ahogy az előbb is tettük!
 
 ```python
 print(f"{''.join(megfejtes)}")
 ```
 
-5️⃣ Ezen a ponton a játékos egyszer tud tippelni, majd a program futása véget ér. Ha azt szeretnénk, hogy többször is tippeljen, akkor az eddig megírt kódunk egy részét meg kell ismételni. Ehhez helyezzük a megfelelő kódrészletet egy `while` ciklusba, és ismételjük azt (egyelőre) végtelenszer!
+4️⃣ Ezen a ponton a játékos egyszer tud tippelni, majd a program futása véget ér. Ha azt szeretnénk, hogy többször is tippeljen, akkor az eddig megírt kódunk egy részét meg kell ismételni. Ehhez helyezzük a megfelelő kódrészletet egy `while` ciklusba, és ismételjük azt (egyelőre) végtelenszer!
+
+```python
+feladvany = "almafa"
+megfejtes = list("_" * len(feladvany))
+
+print(f"{''.join(megfejtes)}")
+
+while True: # Az Igaz feltétel miatt magától soha nem áll le a ciklus
+    print()
+    tipp = input("Tipp: ")
+
+    for sorszam, betu in enumerate(feladvany):
+        if betu == tipp:
+            megfejtes[sorszam] = tipp
+
+    print(f"{''.join(megfejtes)}")
+```
+
+A program így egészen addig fut, amíg be nem zárjuk az ablakot. Ha a játékos az összes betűt eltalálta, akkor sem áll meg.
+
+Ahhoz, hogy a ciklust megállítsuk, ellenőriznünk kell, hogy a játékos kitalálta-e a feladványt. Ezt legegyszerűbben úgy tudjuk megtenni, hogy összehasonlítjuk a feladvány és a megfejtés változókat, és ha azok ugyanazt a szöveget tartalmazzák, az azt jelenti, hogy a játékos mindent betűt megtalált. Ebben az esetben a `break` utasítás segítségével megállítjuk a ciklust.
 
 ```python
 feladvany = "almafa"
@@ -86,4 +107,9 @@ while True:
             megfejtes[sorszam] = tipp
 
     print(f"{''.join(megfejtes)}")
+    
+    if ''.join(megfejtes) == feladvany: # A megfejtés betűit ne felejtsük el összefűzni!
+        break
 ```
+
+5️⃣ 

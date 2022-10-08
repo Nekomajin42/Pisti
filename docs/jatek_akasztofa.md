@@ -122,8 +122,7 @@ Ezután a kódnak azon a részén, ahol ellenőrizzük, hogy a játékos jól ti
 # ...
 
 while True:
-    print()
-    tipp = input("Tipp: ")
+    # ...
 
     for sorszam, betu in enumerate(feladvany):
         if betu == tipp:
@@ -141,10 +140,6 @@ Utolsó lépésként a ciklus végén ellenőrizzük a játékos életeinek a sz
 
 while True:
     # ...
-    
-    if ''.join(megfejtes) == feladvany: # A megfejtés betűit ne felejtsük el összefűzni!
-        print(f"Helyes megoldas!")
-        break
     
     if elet == 0:
         print(f"Sajnos vesztettel!")

@@ -1,0 +1,2 @@
+# Pisti
+Játékok Python programozáshoz

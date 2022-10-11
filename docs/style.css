@@ -38,15 +38,10 @@ article {
 h1 {
 	font-family: Georgia, serif;
 	font-size: 2rem;
-	color: var(--color-orange);
+	color: var(--color-purple);
 	text-align: center;
 	line-height: 150%;
 	margin: 32px 8px 32px 8px;
-}
-
-h1.game {
-	color: var(--color-purple);
-	margin: 32px 8px 8px 8px;
 }
 
 #tags {
@@ -76,7 +71,7 @@ h2 {
 
 h3 {
 	font-family: Georgia, serif;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	color: var(--color-orange);
 	line-height: 150%;
 	margin: 16px 8px 8px 8px;
@@ -88,12 +83,29 @@ p {
 	margin: 8px;
 }
 
-p.warn {
-	font-weight: bold;
+p.warn,
+p.note {
+	position: relative;
+	padding: 0 0 0 12px;
 }
 
-p.note {
-	font-style: italic;
+p.warn::before,
+p.note::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 4px;
+	border-radius: 2px;
+}
+
+p.warn::before {
+	background: var(--color-red);
+}
+
+p.note::before {
+	background: var(--color-yellow);
 }
 
 ul {
@@ -109,14 +121,14 @@ ul ul {
 }
 
 a {
-	color: var(--color-green);
+	color: var(--color-pink);
 	text-decoration: none;
 }
 
 a:hover,
 a:focus,
 a:active {
-	color: var(--color-yellow);
+	color: var(--color-orange);
 }
 
 pre {
@@ -167,10 +179,21 @@ code {
 }
 
 footer {
+	position: relative;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
 	margin: 24px 8px 8px 8px;
-	padding: 8px;
-	border-top: 2px solid var(--color-orange);
+	padding: 16px 8px 0 8px;
+}
+
+footer::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: var(--color-purple);
+	border-radius: 2px;
 }

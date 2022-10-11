@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="hu">
+	<head>
+		<meta charset="utf-8" />
+		<title>Akasztófa (feladvány szótárból) - Játékok Python programozáshoz</title>
+		<link rel="stylesheet" href="../style.css" />
+		<!-- <link rel="stylesheet" href="../dracula.min.css"> -->
+		<script src="../highlight.min.js"></script>
+		<script>
+			hljs.configure({languages: ["Python"]});
+			hljs.highlightAll();
+		</script>
+		<link rel="icon" href="../logo.svg" />
+		<meta name="viewport" content="width=device-width" />
+	</head>
+	<body>
+		<article>
+			<header>
+				<h1>Akasztófa (feladvány szótárból)</h1>
+				<div id="tags">
+					<span class="tag">🔖 random</span>
+					<span class="tag">🔖 file</span>
+					<span class="tag">🔖 list</span>
+					<span class="tag">🔖 for</span>
+				</div>
+			</header>
+			<section>
+				<h2>A megoldás menete</h2>
+				<p>Ebben a feladatban az <a href="akasztofa_1.html">alapjátékot</a> bővítjük úgy, hogy a számítógép egy szótárból véletlenszerűen válasszon feladványt.</p>
+				<h3>#1.</h3>
+				<p>Első lépésként hozzunk létre egy <code>szotar.txt</code> nevű szöveges állományt ugyanabban a mappában, amiben a forráskódunk is van! Az állományba írjunk be tetszőleges számú szót, soronként egyet, majd mentsük el!</p>
+				<pre class="language-plaintext"><code>almafa
+kajszibarack
+narancs
+cukkini
+burgonya</code></pre>
+				<p class="note">Annak érdekében, hogy a program minden fejlesztőkörnyezetben fusson, célszerű olyan szavakat választani, amikben nincsenek ékezetes magánhangzók. Ha megbizonyosodtunk róla, hogy az ékezetes magánhangzók nem okoznak programhibát, akkor természetesen olyan szavakat is lehet használni.</p>
+				<h3>#2</h3>
+				<p>Az alapjátékban megírt programkód legelején hozzunk létre egy új sort, és egészítsük ki azt egy rövid kódrészlettel!</p>
+				<p>Nyissuk meg az előbb létrehozott állományt, hogy a program számára olvasható legyen! Az <code>"r"</code> kapcsolóval tudjuk jelezni, hogy csak olvasni szeretnénk az állományt, írni nem.</p>
+				<pre class="language-python"><code>szotar = open("szotar.txt", "r")</code></pre>
+				<p>Hozzunk létre egy változót, és olvassuk be az állomány tartalmát!</p>
+				<pre class="language-python"><code>szavak = szotar.readlines()</code></pre>
+				<p>A szavak nevű változónk tartalmazza a szótárban található szavak listáját. Ebből fogunk véletlenszerűen választani egyet.</p>
+				<p>Importáljuk a <code>random</code> csomagot, majd generáljunk egy véletlen számot! A megfelelő intervallum megadásához kérjük le, hogy hány elemű a szavak nevű listánk!</p>
+				<pre class="language-python"><code>import random
+veletlen = random.randint(0, len(szavak)-1)</code></pre>
+				<p class="warn">Ne felejtsük el, hogy a Python a sorszámozást nem 1-től, hanem 0-tól kezdi! Ha a szótárunk öt szót tartalmaz, azok 0-tól 4-ig lesznek sorszámozva.</p>
+				<p>Végül válasszuk ki a listánk véletlenedik elemét, és adjuk értékül a feladvány változónak!</p>
+				<pre class="language-python"><code>feladvany = szavak[veletlen]</code></pre>
+				<p>Mivel a Python a szótár beolvasásakor a sorvégi entereket is megőrzi, minden szó egy karakterrel hosszabb lesz. Ezt az entert a <code>strip()</code> függvény segítségével tudjuk eltávolítani.</p>
+				<pre class="language-python"><code>feladvany = szavak[veletlen].strip()</code></pre>
+				<h2>A teljes kód</h2>
+				<pre class="language-python"><code>szotar = open("szotar.txt", "r")
+szavak = szotar.readlines()
+
+import random
+veletlen = random.randint(0, len(szavak)-1)
+				
+feladvany = szavak[veletlen].strip()
+megfejtes = list("_" * len(feladvany))
+
+elet = 10
+
+print(f"{''.join(megfejtes)}")
+
+while True:
+    print()
+    tipp = input("Tipp: ")
+
+    talalt = False
+    for sorszam, betu in enumerate(feladvany):
+        if betu == tipp:
+            megfejtes[sorszam] = tipp
+            talalt = True
+    if talalt == False:
+        elet -= 1
+
+    print(f"{''.join(megfejtes)}")
+
+    if ''.join(megfejtes) == feladvany:
+        print(f"Helyes megoldas!")
+        break
+
+    if elet == 0:
+        print(f"Sajnos vesztettel!")
+        print(f"A helyes megfejtes: {feladvany}")
+        break</code></pre>
+			</section>
+			<footer>
+				<a href="https://github.com/Nekomajin42/" target="_blank">🐍 Tóth Róbert</a>
+				<a href="https://draculatheme.com/" target="_blank">🧛 Dracula Theme</a>
+			</footer>
+		</article>
+	</body>
+</html>

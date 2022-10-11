@@ -16,11 +16,11 @@
 	<body>
 		<article>
 			<header>
-				<h1 class="game">Akasztófa</h1>
+				<h1>Akasztófa (alapjáték)</h1>
 				<div id="tags">
 					<span class="tag">🔖 string</span>
-					<span class="tag">🔖 list</span>
 					<span class="tag">🔖 f-string</span>
+					<span class="tag">🔖 list</span>
 					<span class="tag">🔖 print</span>
 					<span class="tag">🔖 for</span>
 					<span class="tag">🔖 while</span>
@@ -35,30 +35,26 @@
 				<pre class="language-python"><code>feladvany = "almafa"
 megfejtes = "_" * len(feladavany)</code></pre>
 				<p class="warn">A <code>*</code> műveleti jel ebben az esetben nem szorzást végez, hanem megismétli a szöveget annyiszor, amennyi a jobb oldalán áll.</p>
-				<p>A játékos tippje után, ha olyan betűt ír be, ami szerepel a feladaványban, az alulvonást ki fogjuk cserélni a megfelelő betűre. A Python viszont nem engedi, hogy egy szöveg kerektereit módosítsuk, ezért készítsünk a szövegből egy listát, ami a megfejtés karaktereit tartalmazza!</p>
+				<p>A játékos tippje után, ha olyan betűt ír be, ami szerepel a feladaványban, az alulvonást ki fogjuk cserélni a megfelelő betűre. A Python viszont nem engedi, hogy egy szöveg karaktereit módosítsuk, ezért készítsünk a szövegből egy listát, ami a megfejtés betűit tartalmazza!</p>
 				<pre class="language-python"><code>feladvany = "almafa"
 megfejtes = list("_" * len(feladavany))</code></pre>
 				<h3>#2.</h3>
 				<p>Írjuk ki a képernyőre a megfejtést, ami egyelőre csak alulvonásokat tartalmaz!</p>
-				<pre class="language-python"><code>print(f"{megfejtes}")</code></pre>
+				<pre class="language-python"><code>print(f"{megfejtes}") # -> "______"</code></pre>
 				<p>Látni fogjuk, hogy az alulvonások felsorolásszerűen jelennek meg. Ez azért van, mert a megfejtés változónk nem egy szöveg, hanem egy szöveg betűinek a listája.</p>
 				<p>A feladat megoldása közben ilyen formában van rá szükségünk, a képernyőn viszont rendes szövegként szeretnénk látni, ezért a kiírás előtt a <code>join()</code> függvény segítségével fűzzük össze a listában találató betűket, hogy újra egy szóként jelenjenek meg!</p>
-				<p class="warn">Figyeljünk arra, hogy az összefűzés idézőjelek között van! Az összefűzéshez használjunk helyette aposztrófokat!</p>
-				<pre class="language-python"><code>print(f"{''.join(megfejtes)}")</code></pre>
+				<p class="warn">Figyeljünk arra, hogy az összefűzés idézőjelek között van! Az összefűzéshez használjunk idézőjelek helyett aposztrófokat!</p>
+				<pre class="language-python"><code>print(f"{''.join(megfejtes)}") # -> ['_', '_', '_', '_', '_', '_']</code></pre>
 				<h3>#3.</h3>
-				<p>Írjunk egy üres sort, hogy kiírás szebben tagolt legyen, majd kérjünk be a felhasználótól egy betűt, és tároljuk el egy változóban!</p>
-				<p class="note">(Feltételezzük, hogy a felhasználó tényleg egy betűt ír be. Ezt nem fogjuk ellenőrizni.)</p>
+				<p>Írjunk egy üres sort, hogy a kiírás szebben tagolt legyen, majd kérjünk be a felhasználótól egy betűt, és tároljuk el egy változóban!</p>
+				<p class="note">Feltételezzük, hogy a felhasználó tényleg egy betűt ír be. Ezt nem fogjuk ellenőrizni.</p>
 				<pre class="language-python"><code>print()
 tipp = input("Tipp: ")</code></pre>
 				<p>Készítsünk a feladványból egy felsorolást az <code>enumerate()</code> függvény segítségével, és lépkedjünk végig a felsorolás elemein egy <code>for</code> ciklussal!</p>
-				<pre class="language-python"><code>print()
-tipp = input("Tipp: ")
-for sorszam, betu in enumerate(feladvany):
+				<pre class="language-python"><code>for sorszam, betu in enumerate(feladvany):
     # ???</code></pre>
 				<p>Ellenőrizzük, hogy a játékos tippje megegyezik-e a felsorolás éppen vizsgált elemével, és ha igen, a megfelelő alulvonást cseréljük ki a megfejtésben!</p>
-				<pre class="language-python"><code>print()
-tipp = input("Tipp: ")
-for sorszam, betu in enumerate(feladvany):
+				<pre class="language-python"><code>for sorszam, betu in enumerate(feladvany):
     if betu == tipp:
         megfejtes[sorszam] = tipp</code></pre>
 				<p>Végül, függetlenül attól, hogy a felhasználó eltalálta-e a feladvány valamelyik betűjét, a megoldást írjuk ki újra a képernyőre úgy, ahogy az előbb is tettük!</p>
@@ -70,7 +66,7 @@ megfejtes = list("_" * len(feladvany))
 
 print(f"{''.join(megfejtes)}")
 
-while True: # Az Igaz feltétel miatt magától soha nem áll le a ciklus
+while True: # Az igaz feltétel miatt magától soha nem áll le a ciklus
     print()
     tipp = input("Tipp: ")
 
@@ -80,7 +76,7 @@ while True: # Az Igaz feltétel miatt magától soha nem áll le a ciklus
 
     print(f"{''.join(megfejtes)}")</code></pre>
 				<p>Így néz ki eddig a teljes programkódunk. Ez viszont egészen addig fut, amíg a játékos be nem zárja az ablakot. Ha az összes betűt eltalálta, akkor sem áll meg.</p>
-				<p>Ahhoz, hogy a ciklust megállítsuk, ellenőriznünk kell, hogy a játékos kitalálta-e a feladványt. Ezt legegyszerűbben úgy tudjuk megtenni, hogy összehasonlítjuk a feladvány és a megfejtés változókat, és ha azok ugyanazt a szöveget tartalmazzák, az azt jelenti, hogy a játékos mindent betűt megtalált. Ebben az esetben a `break` utasítás segítségével megállítjuk a ciklust.</p>
+				<p>Ahhoz, hogy a ciklust megállítsuk, ellenőriznünk kell, hogy a játékos kitalálta-e a feladványt. Ezt legegyszerűbben úgy tudjuk megtenni, hogy összehasonlítjuk a feladvány és a megfejtés változókat, és ha azok ugyanazt a szöveget tartalmazzák, az azt jelenti, hogy a játékos mindent betűt megtalált. Ebben az esetben a <code>break</code> utasítás segítségével megállítjuk a ciklust.</p>
 				<pre class="language-python"><code># ...
 
 while True:
@@ -90,7 +86,7 @@ while True:
         print(f"Helyes megoldas!")
         break</code></pre>
 				<h3>#5.</h3>
-				<p>A ciklusunk most már megáll, ha a játékos kitalálta a feladványt, de ez nem túl nehéz feladat, hiszen az összes betűt végigpróbálhatja. Az akasztófa játék szabályai szerint viszont minden hibás tipp estében veszít egy életet, és amikor az összes élete elfogy, akkor meghal.</p>
+				<p>A ciklusunk most már megáll, ha a játékos kitalálta a feladványt, de ez nem túl nehéz feladat, hiszen az összes betűt végigpróbálhatja. Az akasztófa játék szabályai szerint viszont minden hibás tipp estében veszít egy életet, és amikor az összes élete elfogy, akkor vége a játéknak.</p>
 				<p>Ahhoz, hogy ezt ellenőrizzük, a kód elején hozzunk létre egy változót, és a kezdőértékét állítsuk 10-re!</p>
 				<pre class="language-python"><code>feladvany = "almafa"
 megfejtes = list("_" * len(feladvany))
@@ -98,16 +94,18 @@ megfejtes = list("_" * len(feladvany))
 elet = 10
 
 # ...</code></pre>
-				<p>Ezután a kódnak azon a részén, ahol ellenőrizzük, hogy a játékos jól tippelt-e, csökkentsük az élet változó értékét eggyel, ha hibázott!</p>
+				<p>Ezután a kódnak azon a részén, ahol ellenőrizzük, hogy a játékos jól tippelt-e, hozzunk létre egy változót hamis kezdőértékkel! Ha a játékos eltalált egy betűt, akkor a változót állítsuk át igazra! Miután a feladvány összes betűjét ellenőriztük, nézzük meg, hogy a változónk még mindig hamis-e! Ha még mindig hamis, akkor a játékos helytelenül tippelt, tehát levonunk tőle egy életet.</p>
 				<pre class="language-python"><code># ...
 
 while True:
     # ...
 
+    talalt = False
     for sorszam, betu in enumerate(feladvany):
         if betu == tipp:
             megfejtes[sorszam] = tipp
-    else:
+            talalt = True
+    if talalt == False:
         elet -= 1
 
     # ...</code></pre>
@@ -133,10 +131,12 @@ while True:
     print()
     tipp = input("Tipp: ")
 
+    talalt = False
     for sorszam, betu in enumerate(feladvany):
         if betu == tipp:
             megfejtes[sorszam] = tipp
-    else:
+            talalt = True
+    if talalt == False:
         elet -= 1
 
     print(f"{''.join(megfejtes)}")
